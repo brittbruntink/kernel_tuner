@@ -1,0 +1,17 @@
+name: RunFAIRSECO
+on:
+  push:
+    branches:
+      - main
+jobs:
+  RunFAIRSECO:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: SecureSECO/FAIRSECO@v1.0.2
+        with:
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FAIRSECO Result
+          path: .FAIRSECO/
